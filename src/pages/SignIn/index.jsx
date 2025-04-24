@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image, TextInput } from 'react-native';
 import Button from '../../components/atoms/Button';
 import Gap from '../../components/atoms/Gap';
 
-const SignIn = () => {
+const SignIn = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Gap height={100} />
@@ -20,7 +20,7 @@ const SignIn = () => {
       <TextInput style={styles.input} placeholder="Kata Sandi" secureTextEntry />
       <Gap height={24} />
       <Button title="Login" filled />
-      <Button title="Sign Up" />
+      <Button title="Sign Up" onPress={() => {navigation.navigate('SignUp')}}/>
     </View>
   );
 };
