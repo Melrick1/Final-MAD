@@ -1,26 +1,46 @@
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+// src/components/atoms/Button/index.jsx
 import React from 'react';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
-const Button = ({label, onPress, color = '#02CF8E', textColor = '#020202',}) => {
+const Button = ({ title, onPress, filled }) => {
   return (
-    <TouchableOpacity style={styles.button(color)} activeOpacity={0.5} onPress={onPress}>
-      <Text style={styles.label(textColor)}>{label}</Text>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.button, filled ? styles.filled : styles.outline]}>
+      <Text style={[styles.text, filled ? styles.filledText : styles.outlineText]}>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };
 
-export default Button;
-
 const styles = StyleSheet.create({
-  button: color => ({
-    backgroundColor: color,
-    borderRadius: 8,
+  button: {
     paddingVertical: 12,
-  }),
-  label: textColor => ({
-    textAlign: 'center',
-    fontFamily: 'Poppins-Medium',
-    fontSize: 14,
-    color: textColor,
-  }),
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent:'center',
+    marginVertical: 6,
+    width: 300,
+    height: 40,
+  },
+  filled: {
+    backgroundColor: '#63D9B3', // warna hijau dari desain
+  },
+  outline: {
+    backgroundColor: '#CFE3DB', // warna abu
+  },
+  text: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    height: 25,
+  },
+  filledText: {
+    color: '#fff',
+  },
+  outlineText: {
+    color: '#000',
+  },
 });
+
+export default Button;
