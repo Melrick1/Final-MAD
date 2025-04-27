@@ -1,4 +1,3 @@
-// src/pages/SignIn/index.jsx
 import React from 'react';
 import { View, Text, StyleSheet, Image, TextInput } from 'react-native';
 import Button from '../../components/atoms/Button';
@@ -15,19 +14,19 @@ const SignIn = ({ navigation }) => {
         <Text style={styles.subtitle}>Silakan Masuk atau Login</Text>
       </View>
       <Gap height={24} />
-      <TextInput style={styles.input} placeholder="Masukan Nama Email" />
+      <TextInput style={styles.input} placeholder="Masukan Nama Email" placeholderTextColor="#ccc" />
       <Gap height={20} />
-      <TextInput style={styles.input} placeholder="Kata Sandi" secureTextEntry />
+      <TextInput style={styles.input} placeholder="Kata Sandi" secureTextEntry placeholderTextColor="#ccc" />
       <Gap height={24} />
-      <Button title="Login" filled />
-      <Button title="Sign Up" onPress={() => {navigation.navigate('SignUp')}}/>
+      <Button title="Login" onPress={() => navigation.navigate('Home')} />
+      <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
+    flex: 1,
     backgroundColor: '#5D8770',
     alignItems: 'center',
     padding: 20,

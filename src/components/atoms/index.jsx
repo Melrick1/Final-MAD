@@ -1,4 +1,3 @@
-// src/pages/SignIn/index.jsx
 import React from 'react';
 import { View, Text, StyleSheet, Image, TextInput } from 'react-native';
 import Button from '../../components/atoms/Button';
@@ -12,9 +11,9 @@ const SignIn = () => {
       <Text style={styles.title}>Selamat Datang,</Text>
       <Text style={styles.subtitle}>Silakan Masuk atau Login</Text>
       <Gap height={24} />
-      <TextInput style={styles.input} placeholder="Masukan Nama Email" />
+      <TextInput style={styles.input} placeholder="Masukan Nama Email" placeholderTextColor="#ccc" />
       <Gap height={16} />
-      <TextInput style={styles.input} placeholder="Kata Sandi" secureTextEntry />
+      <TextInput style={styles.input} placeholder="Kata Sandi" secureTextEntry placeholderTextColor="#ccc" />
       <Gap height={24} />
       <Button title="Login" filled />
       <Button title="Sign Up" />
