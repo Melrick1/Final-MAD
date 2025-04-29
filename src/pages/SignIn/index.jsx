@@ -1,13 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Animated } from 'react-native';
 import Button from '../../components/atoms/Button';
 import Gap from '../../components/atoms/Gap';
 
-const SignIn = ({ navigation }) => {
+const SignIn = ({ navigation, formOpacity }) => {
   return (
-    <View style={styles.container}>
-      <Gap height={100} />
-      <Image source={require('../../assets/Hama.png')} style={styles.logo} />
+    <Animated.View style={[styles.formContainer, { opacity: formOpacity }]}>        
       <Gap height={20} />
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Selamat Datang,</Text>
@@ -18,23 +16,16 @@ const SignIn = ({ navigation }) => {
       <Gap height={20} />
       <TextInput style={styles.input} placeholder="Kata Sandi" secureTextEntry placeholderTextColor="#ccc" />
       <Gap height={24} />
-      <Button title="Login" onPress={() => navigation.navigate('Home')} />
+      <Button title="Login" filled onPress={() => navigation.navigate('Home')} />
       <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} />
-    </View>
+    </Animated.View>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#5D8770',
+  formContainer: {
+    marginTop: 120 + 60,
     alignItems: 'center',
-    padding: 20,
-  },
-  logo: {
-    width: 120,
-    height: 120,
-    resizeMode: 'contain',
   },
   titleContainer: {
     flexDirection: 'column',

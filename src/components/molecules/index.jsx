@@ -1,5 +1,5 @@
-import Header from './Header';
 import TextInput from './TextInput';
 import Profile from './Profile';
+import LogoSplash from './LogoSplash';
 
-export {Header, TextInput, Profile};
+export {TextInput, Profile, LogoSplash};

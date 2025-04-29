@@ -1,12 +1,24 @@
 import React from 'react';
-import SignIn from './src/pages/SignIn';
+import SplashScreen from './src/pages/SplashScreen';
 import SignUp from './src/pages/SignUp';
 import Home from './src/pages/Home';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+const MainApp = () => {
+  return(
+    <Drawer.Navigator screenOptions={drawerOptions}>
+      <Drawer.Screen name='Home' component={Home} />
+      <Drawer.Screen name='Sign-up' component={SignUp} options={{headerShown: false}}/>
+      <Drawer.Screen name='Sign-Out' component={SplashScreen} options={{headerShown: false}}/>
+    </Drawer.Navigator>
+  )
+}
 
 const App = () => {
   return (
@@ -14,7 +26,7 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen
           name="SignIn"
-          component={SignIn}
+          component={SplashScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -24,12 +36,30 @@ const App = () => {
         />
         <Stack.Screen
           name="Home"
-          component={Home}
+          component={MainApp}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
+};
+
+const drawerOptions = {
+  headerStyle: {
+    backgroundColor: '#2E8D79',
+  },
+  headerTintColor: '#FFFFFF',
+  headerTitleAlign: 'center',
+
+  drawerStyle: {
+    backgroundColor: '#2E8D79',
+  },
+  drawerActiveBackgroundColor: '#1B5045', 
+  drawerInactiveTintColor: '#FFFFFF',
+  drawerActiveTintColor: '#FFFFFF',
+  drawerLabelStyle: {
+    fontSize: 16,
+  },
 };
 
 export default App;
