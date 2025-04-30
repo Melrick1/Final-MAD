@@ -8,6 +8,7 @@ import SignUp from './src/pages/SignUp';
 import Home from './src/pages/Home';
 import Hasil from './src/pages/Hasil';
 import HistoryList from './src/pages/History';
+import About from './src/pages/About';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -17,6 +18,7 @@ const MainApp = () => {
     <Drawer.Navigator screenOptions={drawerOptions}>
       <Drawer.Screen name='Home' component={Home} />
       <Drawer.Screen name='Riwayat' component={HistoryList} />
+      <Drawer.Screen name='Tentang' component={About} />
       <Drawer.Screen name='Sign-Out' component={SplashScreen} options={{headerShown: false}}/>
     </Drawer.Navigator>
   )
@@ -37,7 +39,7 @@ const App = () => {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="Home"
+          name="MainApp"
           component={MainApp}
           options={{headerShown: false}}
         />

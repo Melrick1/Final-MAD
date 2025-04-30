@@ -7,7 +7,7 @@ const SignUp = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Gap height={40} />
-      <Image source={require('../../assets/Hama.png')} style={styles.logo} />
+      <Image source={require('../../assets/images/Hama.png')} style={styles.logo} />
       <Gap height={20} />
 
       <View style={styles.titleContainer}>

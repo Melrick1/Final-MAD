@@ -19,7 +19,7 @@ const SignIn = ({ navigation, formOpacity }) => {
       <TextInput style={styles.input} placeholder="Kata Sandi" secureTextEntry placeholderTextColor="#ccc" />
       
       <Gap height={24} />
-      <Button title="Login" filled onPress={() => navigation.navigate('Home')} />
+      <Button title="Login" filled onPress={() => navigation.navigate('MainApp')} />
       <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} />
     </Animated.View>
   );

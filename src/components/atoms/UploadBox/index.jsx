@@ -4,7 +4,7 @@ import { TouchableOpacity, Image, Text, StyleSheet } from 'react-native'
 function UploadBox({ height }) {
   return (
     <TouchableOpacity style={[styles.uploadBox, { height }]}>
-        <Image source={require('../../../assets/Placeholder.png')} style={styles.uploadIcon} />
+        <Image source={require('../../../assets/images/Placeholder.png')} style={styles.uploadIcon} />
         <Text style={styles.uploadText}>Select File</Text>
     </TouchableOpacity>
   )

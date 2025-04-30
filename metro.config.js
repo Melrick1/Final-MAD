@@ -4,7 +4,6 @@ const defaultConfig = getDefaultConfig(__dirname);
 const { assetExts, sourceExts } = defaultConfig.resolver;
 
 const config = {
-  resetCache: true,
   transformer: {
     babelTransformerPath: require.resolve('react-native-svg-transformer'),
   },

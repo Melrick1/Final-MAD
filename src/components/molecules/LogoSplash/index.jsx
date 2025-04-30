@@ -6,7 +6,7 @@ function LogoSplash({ logoY, logoTextOpacity }) {
     <Animated.View
       style={[styles.container, { transform: [{ translateY: logoY }] }]}
     >
-      <Image source={require('../../../assets/Hama.png')} style={styles.logo} />
+      <Image source={require('../../../assets/images/Hama.png')} style={styles.logo} />
       <Animated.Text style={[styles.text, { opacity: logoTextOpacity }]}>HamaAI</Animated.Text>
     </Animated.View>
   );

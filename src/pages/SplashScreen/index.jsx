@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { LogoSplash } from '../../components/molecules';
 import SignIn from '../SignIn';
-import SplashAnimation from '../../utilities/SplashAnimations';
+import SplashAnimation from '../../animations/SplashAnimation';
 
 function SplashScreen({ navigation }) {
     const logoSize = 120;
