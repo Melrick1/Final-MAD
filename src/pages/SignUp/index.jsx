@@ -6,7 +6,7 @@ import Button from '../../components/atoms/Button';
 const SignUp = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Gap height={100} />
+      <Gap height={40} />
       <Image source={require('../../assets/Hama.png')} style={styles.logo} />
       <Gap height={20} />
 

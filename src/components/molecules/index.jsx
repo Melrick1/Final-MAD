@@ -1,5 +1,4 @@
-import TextInput from './TextInput';
-import Profile from './Profile';
+import HistoryItem from './HistoryItem';
 import LogoSplash from './LogoSplash';
 
-export {TextInput, Profile, LogoSplash};
+export {HistoryItem, LogoSplash};

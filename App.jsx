@@ -7,6 +7,7 @@ import SplashScreen from './src/pages/SplashScreen';
 import SignUp from './src/pages/SignUp';
 import Home from './src/pages/Home';
 import Hasil from './src/pages/Hasil';
+import HistoryList from './src/pages/History';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -15,7 +16,7 @@ const MainApp = () => {
   return(
     <Drawer.Navigator screenOptions={drawerOptions}>
       <Drawer.Screen name='Home' component={Home} />
-      <Drawer.Screen name='Sign-up' component={SignUp} options={{headerShown: false}}/>
+      <Drawer.Screen name='Riwayat' component={HistoryList} />
       <Drawer.Screen name='Sign-Out' component={SplashScreen} options={{headerShown: false}}/>
     </Drawer.Navigator>
   )
