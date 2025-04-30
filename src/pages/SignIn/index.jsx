@@ -11,10 +11,13 @@ const SignIn = ({ navigation, formOpacity }) => {
         <Text style={styles.title}>Selamat Datang,</Text>
         <Text style={styles.subtitle}>Silakan Masuk atau Login</Text>
       </View>
+
       <Gap height={24} />
       <TextInput style={styles.input} placeholder="Masukan Nama Email" placeholderTextColor="#ccc" />
+
       <Gap height={20} />
       <TextInput style={styles.input} placeholder="Kata Sandi" secureTextEntry placeholderTextColor="#ccc" />
+      
       <Gap height={24} />
       <Button title="Login" filled onPress={() => navigation.navigate('Home')} />
       <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} />

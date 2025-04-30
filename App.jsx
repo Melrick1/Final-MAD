@@ -1,11 +1,12 @@
 import React from 'react';
-import SplashScreen from './src/pages/SplashScreen';
-import SignUp from './src/pages/SignUp';
-import Home from './src/pages/Home';
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+
+import SplashScreen from './src/pages/SplashScreen';
+import SignUp from './src/pages/SignUp';
+import Home from './src/pages/Home';
+import Hasil from './src/pages/Hasil';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -23,7 +24,7 @@ const MainApp = () => {
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={drawerOptions}>
         <Stack.Screen
           name="SignIn"
           component={SplashScreen}
@@ -38,6 +39,10 @@ const App = () => {
           name="Home"
           component={MainApp}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Hasil"
+          component={Hasil}
         />
       </Stack.Navigator>
     </NavigationContainer>

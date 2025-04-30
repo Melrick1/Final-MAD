@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import Button from '../../components/atoms/Button';
-import Gap from '../../components/atoms/Gap';
+import { View, Text, StyleSheet} from 'react-native';
+import { Button, Gap, UploadBox } from '../../components/atoms';
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
 
       <Gap height={30} />
 
-      {/* Title */}      <View style={styles.titleContainer}>
+      {/* Title */}
+      <View style={styles.titleContainer}>
         <Text style={styles.title}>
           Unggah foto hama dan serangga{'\n'}pada tanaman Anda di sini
         </Text>
@@ -23,17 +23,13 @@ const Home = () => {
 
       <Gap height={30} />
 
-      {/* Upload Box */}
-      <TouchableOpacity style={styles.uploadBox}>
-        <Image source={require('../../assets/Placeholder.png')} style={styles.uploadIcon} />
-        <Text style={styles.uploadText}>Select File</Text>
-      </TouchableOpacity>
+      <UploadBox height={'25%'}/>
 
       <Gap height={60} />
 
       {/* Button Deteksi */}
       <View style={styles.buttonContainer}>
-        <Button title="Deteksi" detect onPress={() => console.log('Tombol Deteksi ditekan!')} />
+        <Button title="Deteksi" detect onPress={() => navigation.navigate('Hasil')} />
       </View>
     </View>
   );
@@ -44,6 +40,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#CFE3DB',
     padding: 20,
+    alignItems: 'center',
   },
   header: {
     flexDirection: 'row',
@@ -69,14 +66,15 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   title: {
-    fontSize: 16,
+    fontSize: 24,
     fontWeight: 'bold',
     color: '#000',
   },
   subtitle: {
-    fontSize: 10,
+    fontSize: 16,
     color: '#333',
     marginTop: 8,
+    textAlign: 'justify',
   },
   uploadBox: {
     borderWidth: 2,
@@ -84,7 +82,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#CFE3DB',
     height: 182,
-    width: 356,
+    width: '90%',
     justifyContent: 'center',
     alignItems: 'center',
   },
