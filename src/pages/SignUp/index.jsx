@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {StyleSheet, Text, TextInput, TouchableOpacity, Image, View} from 'react-native';
 import Gap from '../../components/atoms/Gap';
 import Button from '../../components/atoms/Button';
+import { AuthSignUp } from '../../utilities/AuthController';
 
 const SignUp = ({ navigation }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const SignUpHandler = async () => {
+    AuthSignUp(name, email, password);
+  }
+
   return (
     <View style={styles.container}>
       <Gap height={40} />
@@ -14,16 +23,37 @@ const SignUp = ({ navigation }) => {
         <Text style={styles.title}>Selamat Datang,</Text>
         <Text style={styles.subtitle}>Silakan Masuk atau Login</Text>
       </View>
-      <Gap height={24} />
-      
-      <TextInput placeholder="Masukan Nama Email" style={styles.input} placeholderTextColor="#ccc"/>
       <Gap height={20} />
-      
+
       <TextInput
-        placeholder="Kata Sandi" secureTextEntry style={styles.input} placeholderTextColor="#ccc"/>
-      <Gap height={24} />
-      
-      <Button title="Sign Up" filled />
+        style={styles.input}
+        placeholder="Masukan Nama"
+        placeholderTextColor="#ccc"
+        onChangeText={text => setName(text)}
+        value={name}
+      />
+      <Gap height={20} />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Masukan Email Anda"
+        placeholderTextColor="#ccc"
+        onChangeText={text => setEmail(text)}
+        value={email}
+      />
+      <Gap height={20} />
+
+
+      <TextInput
+        placeholder="Kata Sandi" secureTextEntry
+        style={styles.input}
+        placeholderTextColor="#ccc"
+        onChangeText={text => setPassword(text)}
+        value={password}
+      />
+      <Gap height={24}/>
+
+      <Button title="Sign Up" filled  onPress={SignUpHandler}/>
       <Gap height={24} />
 
       <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
