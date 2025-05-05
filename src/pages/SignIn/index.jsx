@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Animated } from 'react-native';
 import Button from '../../components/atoms/Button';
 import Gap from '../../components/atoms/Gap';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { Auth } from '../../config/FirebaseAPI';
+import { AuthSignIn } from '../../utilities/AuthController';
 
 const SignIn = ({ navigation, formOpacity }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const SignInHandler = async () => {
+    await signInWithEmailAndPassword(Auth, email, password);
+    navigation.navigate('MainApp');
+  };
+
   return (
-    <Animated.View style={[styles.formContainer, { opacity: formOpacity }]}>        
+    <Animated.View style={[styles.formContainer, { opacity: formOpacity }]}>
       <Gap height={20} />
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Selamat Datang,</Text>
@@ -13,14 +24,27 @@ const SignIn = ({ navigation, formOpacity }) => {
       </View>
 
       <Gap height={24} />
-      <TextInput style={styles.input} placeholder="Masukan Nama Email" placeholderTextColor="#ccc" />
+      <TextInput
+        style={styles.input}
+        placeholder="Masukan Nama Email"
+        placeholderTextColor="#ccc"
+        onChangeText={text => setEmail(text)}
+        value={email}
+      />
 
       <Gap height={20} />
-      <TextInput style={styles.input} placeholder="Kata Sandi" secureTextEntry placeholderTextColor="#ccc" />
+      <TextInput
+        style={styles.input}
+        placeholder="Kata Sandi"
+        secureTextEntry
+        placeholderTextColor="#ccc"
+        onChangeText={text => setPassword(text)}
+        value={password}
+      />
       
       <Gap height={24} />
-      <Button title="Login" filled onPress={() => navigation.navigate('MainApp')} />
-      <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} />
+      <Button title="Sign-In" filled onPress={SignInHandler} />
+      <Button title="Sign-Up" onPress={() => navigation.navigate('SignUp')} />
     </Animated.View>
   );
 }

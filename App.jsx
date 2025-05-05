@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import FlashMessage from 'react-native-flash-message';
 
 import SplashScreen from './src/pages/SplashScreen';
 import SignUp from './src/pages/SignUp';
@@ -26,6 +27,7 @@ const MainApp = () => {
 
 const App = () => {
   return (
+    <>
     <NavigationContainer>
       <Stack.Navigator screenOptions={drawerOptions}>
         <Stack.Screen
@@ -49,6 +51,8 @@ const App = () => {
         />
       </Stack.Navigator>
     </NavigationContainer>
+    <FlashMessage position="top" />
+    </>
   );
 };
 
