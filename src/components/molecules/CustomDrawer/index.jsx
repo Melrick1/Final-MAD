@@ -4,16 +4,22 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import { StyleSheet } from 'react-native';
+import { AuthSignOut } from '../../../utilities/AuthController';
 
 function CustomDrawerContent(props) {
   const { navigation } = props;
+
+  const SignOutHandler = async () => {
+    await AuthSignOut()
+    navigation.replace('SignIn')
+  }
 
   return (
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />
       <DrawerItem
         label="SignOut"
-        onPress={() =>  navigation.replace('SignIn')}
+        onPress={SignOutHandler}
         style={styles.signOutItem}
         labelStyle={styles.signOutLabel}
         inactiveTintColor="#FFF"

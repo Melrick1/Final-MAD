@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { ScrollView, View, Text, StyleSheet, Image } from 'react-native';
 import { Gap, ImageBox } from '../../components/atoms';
+import MarkdownView from '../../components/molecules/MarkdownView';
 
 const Hasil = ({ route, navigation}) => {
   const { image, analysisResult } = route.params || {};
@@ -19,7 +20,7 @@ const Hasil = ({ route, navigation}) => {
             <View style={styles.resultBox}>
                 <Text style={styles.resultTitle}>Penjelasan :</Text>
                 <Gap height={10} />
-                <Text>{analysisResult}</Text>
+                <MarkdownView markdown={analysisResult} />
             </View>
         </View>
     </ScrollView>

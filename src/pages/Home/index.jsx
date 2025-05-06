@@ -2,15 +2,19 @@ import React, { useEffect, useState} from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 import { Button, Gap, UploadBox } from '../../components/atoms';
 import { Placeholder } from '../../assets/images';
+import AnalyzeImage from '../../utilities/AnalyzeImage';
 
 const Home = ({ navigation }) => {
   const [image, setImage] = useState(Placeholder);
+  const [Base64, setBase64 ] = useState();
   const [analysisResult, setAnalysisResult] = useState(null);
 
   async function handleDetection() {
-    if (!image) return;
+    if (!Base64) return;
 
-    setAnalysisResult("Berikut adalah hasil deteksi: lorem ipsum")
+    setAnalysisResult(null);
+    const result = await AnalyzeImage(Base64);
+    setAnalysisResult(result);
   }
 
   useEffect(() => {
@@ -39,7 +43,7 @@ const Home = ({ navigation }) => {
 
       <Gap height={30} />
 
-      <UploadBox height={'25%'} image={image} setImage={setImage}/>
+      <UploadBox height={'25%'} image={image} setImage={setImage} setBase64={setBase64}/>
 
       <Gap height={60} />
 

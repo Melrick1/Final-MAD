@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { TouchableOpacity, Image, Text, StyleSheet } from 'react-native'
 import { launchImageLibrary } from 'react-native-image-picker';
-import { Placeholder } from '../../../assets/images';
 import { showMessage } from 'react-native-flash-message';
 
-function UploadBox({ height, image, setImage }) {
+function UploadBox({ height, image, setImage, setBase64}) {
     const getImage = async () => {
         const result = await launchImageLibrary({
           quality: 0.5,
@@ -19,15 +18,16 @@ function UploadBox({ height, image, setImage }) {
           });
         } else {
           const assets = result.assets[0];
-          const base64 = `data:${assets.type};base64, ${assets.base64}`;
-          const source = {uri: base64};
+          const imageData = `data:${assets.type};base64, ${assets.base64}`;
+          const source = {uri: imageData};
+          setBase64(assets.base64)
           setImage(source);
         }
     };
 
     return (
         <TouchableOpacity style={[styles.uploadBox, { height }]} onPress={getImage}>
-            <Image source={image} style={styles.uploadIcon} />
+            <Image source={image} style={styles.uploadIcon} onPress={getImage} />
         </TouchableOpacity>
     )
 }
