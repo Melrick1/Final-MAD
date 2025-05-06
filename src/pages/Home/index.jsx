@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 import { Button, Gap, UploadBox } from '../../components/atoms';
+import { Placeholder } from '../../assets/images';
 
 const Home = ({ navigation }) => {
+  const [image, setImage] = useState(Placeholder);
+  const [analysisResult, setAnalysisResult] = useState(null);
+
+  async function handleDetection() {
+    if (!image) return;
+
+    setAnalysisResult("Berikut adalah hasil deteksi: lorem ipsum")
+  }
+
+  useEffect(() => {
+      if (analysisResult !== null) {
+        navigation.navigate("Hasil", { image, analysisResult } );
+      }
+  }, [analysisResult])
+
   return (
     <View style={styles.container}>
 
@@ -23,13 +39,13 @@ const Home = ({ navigation }) => {
 
       <Gap height={30} />
 
-      <UploadBox height={'25%'}/>
+      <UploadBox height={'25%'} image={image} setImage={setImage}/>
 
       <Gap height={60} />
 
       {/* Button Deteksi */}
       <View style={styles.buttonContainer}>
-        <Button title="Deteksi" detect onPress={() => navigation.navigate('Hasil')} />
+        <Button title="Deteksi" detect onPress={handleDetection} />
       </View>
     </View>
   );

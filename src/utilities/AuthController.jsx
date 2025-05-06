@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { Auth } from "../config/FirebaseAPI";
 import { showMessage } from "react-native-flash-message";
 
@@ -44,6 +44,20 @@ const AuthSignUp = async (name, email, password) => {
     }
 };
 
+// SignIn
+const AuthSignIn = async (email, password, navigation) => {
+  const isValid = await validateInputs(email, password);
+  if (!isValid) return;
+
+  try {
+    await signInWithEmailAndPassword(Auth, email, password);
+    navigation.navigate('MainApp');
+  }
+  catch (error) {
+    ErrorHandler(error);
+  }
+};
+
 
 // SignOut
 const AuthSignOut = async () => {
@@ -85,4 +99,4 @@ const ErrorHandler = (error) => {
     console.log(error.message)
 }
 
-export { AuthSignUp, AuthSignOut };
+export { AuthSignUp, AuthSignIn, AuthSignOut };

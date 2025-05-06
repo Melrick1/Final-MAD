@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ScrollView, View, Text, StyleSheet, Image } from 'react-native';
-import { Gap, UploadBox } from '../../components/atoms';
+import { Gap, ImageBox } from '../../components/atoms';
 
-const Hasil = () => {
+const Hasil = ({ route, navigation}) => {
+  const { image, analysisResult } = route.params || {};
+
   return (
     <ScrollView style={styles.container}>
         <View style={styles.topContainer}>
@@ -10,22 +12,14 @@ const Hasil = () => {
             <Text style={styles.title}>Hasil Deteksi</Text>
             <Gap height={20} />
 
-            <UploadBox height={'350'}/>
+            <ImageBox image={image} height={'350'}/>
             <Gap height={20} />
         </View>
         <View style={styles.bottomContainer}>
             <View style={styles.resultBox}>
                 <Text style={styles.resultTitle}>Penjelasan :</Text>
                 <Gap height={10} />
-                <Text style={styles.resultText}>
-                    Tipe Hama, Nama ilmiah Hama, Habitat, serta daerah tempat Hama.{"\n\n"}
-                    Solusi Pembasmian dan Pencegahan.{"\n\n"}
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                    tellus tellus, hendrerit sit amet velit ut, ultrices tristique
-                    velit. Phasellus quis arcu tortor. Curabitur odio tortor,
-                    vulputate quis sem nec, iaculis dictum ante. Morbi tortor sem,
-                    sagittis sed gravida in, porta ut velit.
-                </Text>
+                <Text>{analysisResult}</Text>
             </View>
         </View>
     </ScrollView>
